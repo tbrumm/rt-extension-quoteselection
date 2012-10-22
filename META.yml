@@ -1,5 +1,5 @@
 ---
-abstract: 'RT Extension-QuoteSelection Extension'
+abstract: 'Quotes selected text, if any, when replying/commenting to tickets'
 author:
   - 'Thomas Sibley <trs@bestpractical.com>'
 build_requires:
