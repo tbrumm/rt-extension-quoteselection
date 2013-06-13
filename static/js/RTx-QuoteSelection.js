@@ -1,31 +1,35 @@
 jQuery(function() {
-    jQuery(
+    jQuery(document).on(
+        "click",
+
         ".reply-link, "         +
         ".comment-link, "       +
         "#page-actions-reply, " +
-        "#page-actions-comment"
-    ).click(function(ev) {
-        var link = jQuery(this);
-        var selection;
+        "#page-actions-comment",
 
-        if (window.getSelection)
-            selection = window.getSelection();
-        else if (document.getSelection)
-            selection = document.getSelection();
-        else if (document.selection)
-            selection = document.selection.createRange().text;
+        function(ev) {
+            var link = jQuery(this);
+            var selection;
 
-        if (selection.toString)
-            selection = selection.toString();
+            if (window.getSelection)
+                selection = window.getSelection();
+            else if (document.getSelection)
+                selection = document.getSelection();
+            else if (document.selection)
+                selection = document.selection.createRange().text;
 
-        if (typeof(selection) !== "string" || selection.length < 3)
-            return
+            if (selection.toString)
+                selection = selection.toString();
 
-        // TODO: wrap long lines before quoting
-        selection = selection.replace(/^/gm, "> ");
-        selection = selection.concat("\n\n");
-        selection = encodeURIComponent(selection);
+            if (typeof(selection) !== "string" || selection.length < 3)
+                return
 
-        link.attr("href", link.attr("href").concat("&UpdateContent=" + selection));
-    });
+            // TODO: wrap long lines before quoting
+            selection = selection.replace(/^/gm, "> ");
+            selection = selection.concat("\n\n");
+            selection = encodeURIComponent(selection);
+
+            link.attr("href", link.attr("href").concat("&UpdateContent=" + selection));
+        }
+    );
 });
