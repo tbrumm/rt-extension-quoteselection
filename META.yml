@@ -16,8 +16,8 @@ meta-spec:
 name: RT-Extension-QuoteSelection
 no_index:
   directory:
-    - html
     - inc
+    - static
 resources:
   license: http://opensource.org/licenses/gpl-license.php
 version: 0.01
