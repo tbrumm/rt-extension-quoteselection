@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RT::Extension::QuoteSelection;
 
-our $VERSION = '0.01';
+our $VERSION = '1.00';
 
 RT->AddJavaScript("RTx-QuoteSelection.js");
 
@@ -29,21 +29,25 @@ The per-transaction Reply/Comment links will consider your update a response to
 the transaction even if you quote from an entirely different transaction.  This
 doesn't matter to most people, and only affects email threading.
 
-=head1 INSTALLATION 
+=head1 INSTALLATION
 
 =over
 
-=item perl Makefile.PL
+=item C<perl Makefile.PL>
 
-=item make
+=item C<make>
 
-=item make install
+=item C<make install>
 
 May need root permissions
 
-=item Edit your /opt/rt4/etc/RT_SiteConfig.pm
+=item Edit your F</opt/rt4/etc/RT_SiteConfig.pm>
 
-Add this line:
+If you are using RT 4.2 or greater, add this line:
+
+    Plugin('RT::Extension::QuoteSelection');
+
+For RT 4.0, add this line:
 
     Set(@Plugins, qw(RT::Extension::QuoteSelection));
 
@@ -59,19 +63,21 @@ or add C<RT::Extension::QuoteSelection> to your existing C<@Plugins> line.
 
 =head1 AUTHOR
 
-Thomas Sibley <trs@bestpractical.com>
+Best Practical Solutions, LLC E<lt>modules@bestpractical.comE<gt>
 
 =head1 BUGS
 
-All bugs should be reported via mail to
-L<bug-RT-Extension-QuoteSelection@rt.cpan.org|mailto:bug-RT-Extension-QuoteSelection@rt.cpan.org>
-or via the web at
-L<rt.cpan.org|http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Extension-QuoteSelection>.
+All bugs should be reported via email to
 
+    L<bug-RT-Extension-QuoteSelection@rt.cpan.org|mailto:bug-RT-Extension-QuoteSelection@rt.cpan.org>
+
+or via the web at
+
+    L<rt.cpan.org|http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Extension-QuoteSelection>.
 
 =head1 LICENSE AND COPYRIGHT
 
-This software is Copyright (c) 2012 by Best Practical Solutions
+This software is Copyright (c) 2012-2014 by Best Practical Solutions, LLC
 
 This is free software, licensed under:
 
