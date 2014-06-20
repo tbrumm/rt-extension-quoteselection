@@ -10,10 +10,10 @@ jQuery(function() {
 
         if (window.getSelection)
             selection = window.getSelection();
-        else if (document.getSelection)
-            selection = document.getSelection();
-        else if (document.selection)
-            selection = document.selection.createRange().text;
+        else if (document.getSelection)
+            selection = document.getSelection();
+        else if (document.selection)
+            selection = document.selection.createRange().text;
 
         if (selection.toString)
             selection = selection.toString();
