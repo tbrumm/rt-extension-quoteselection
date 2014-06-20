@@ -1,13 +1,8 @@
 jQuery(function() {
-    jQuery(
-        ".reply-link, "         +
-        ".comment-link, "       +
-        "#page-actions-reply, " +
-        "#page-actions-comment"
-    ).click(function(ev) {
+    var reply_from_selection = function(ev) {
         var link = jQuery(this);
-        var selection;
 
+        var selection;
         if (window.getSelection)
             selection = window.getSelection();
         else if (document.getSelection)
@@ -19,7 +14,7 @@ jQuery(function() {
             selection = selection.toString();
 
         if (typeof(selection) !== "string" || selection.length < 3)
-            return
+            return;
 
         // TODO: wrap long lines before quoting
         selection = selection.replace(/^/gm, "> ");
@@ -27,5 +22,24 @@ jQuery(function() {
         selection = encodeURIComponent(selection);
 
         link.attr("href", link.attr("href").concat("&UpdateContent=" + selection));
+    };
+
+    var apply_quote = function() {
+        var link = jQuery(this);
+        if (link.data("quote-selection"))
+            return;
+        link.data("quote-selection",true);
+        link.click(reply_from_selection);
+    };
+
+    jQuery(
+        ".reply-link, "         +
+        ".comment-link, "       +
+        "#page-actions-reply, " +
+        "#page-actions-comment"
+    ).each(apply_quote);
+
+    jQuery(document).ajaxComplete(function(ev){
+        jQuery(".reply-link, .comment-link").each(apply_quote);
     });
 });
