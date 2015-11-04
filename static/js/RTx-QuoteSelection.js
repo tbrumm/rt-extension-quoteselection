@@ -27,7 +27,10 @@ jQuery(function() {
         }
         selection = encodeURIComponent(selection);
 
-        link.attr("href", link.attr("href").concat("&UpdateContent=" + selection));
+        if ( !link.prop('data-href') ) {
+            link.prop('data-href', link.attr('href'));
+        }
+        link.attr("href", link.prop("data-href").concat("&UpdateContent=" + selection));
     };
 
     var apply_quote = function() {
