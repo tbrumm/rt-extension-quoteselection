@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RT::Extension::QuoteSelection;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 RT->AddJavaScript("RTx-QuoteSelection.js");
 
@@ -11,6 +11,10 @@ RT->AddJavaScript("RTx-QuoteSelection.js");
 =head1 NAME
 
 RT-Extension-QuoteSelection - Quotes selected text, if any, when replying/commenting to tickets
+
+=head1 RT VERSION
+
+Works with RT 4.0, 4.2 and 4.4.
 
 =head1 WHAT'S THIS DO?
 
