@@ -4,6 +4,16 @@ package RT::Extension::QuoteSelection;
 
 our $VERSION = '1.01';
 
+$RT::Config::META{'QuoteSelection'} = {
+    Section         => 'Ticket display',
+    Overridable     => 1,
+    Widget          => '/Widgets/Form/Boolean',
+    WidgetArguments => {
+        Description => 'Quotes selected text', # loc
+        Hints       => '(' . __PACKAGE__ . ')',
+    },
+};
+
 RT->AddJavaScript("RTx-QuoteSelection.js");
 
 =encoding utf8
