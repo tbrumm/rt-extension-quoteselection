@@ -14,7 +14,9 @@ $RT::Config::META{'QuoteSelection'} = {
     },
 };
 
-RT->AddJavaScript("RTx-QuoteSelection.js");
+if ( RT->Config->Get( 'QuoteSelection', $session{'CurrentUser'}) ){
+    RT->AddJavaScript("RTx-QuoteSelection.js");
+}
 
 =encoding utf8
 
